@@ -2,9 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>pokedex</title>
+    <title>Pokedex</title>
 </head>
+
 <body>
-<p> Parmida </p>
+
+<header>
+    <h1>Pokedex Wolrd</h1>
+    <p>Find din ynglings pokemon</p>
+</header>
+
+<main>
+    <section>
+        <h2>Der er så mange pokemons i denne verden. Her kan du se dem ALLE </h2>
+        <button onclick="getallPokemon()">Hvis dem ALLE</button>
+        <div id="allPokemonResult"></div>
+    </section>
+
+    <section id="nameStats">
+        <h2>Søg efter en pokemon og se dens stats</h2>
+        <input id="pokemonName" type="text" placeholder="Fx Ivysaur">
+        <button onclick="searchPokemon()">Søg</button>
+        <div id="nameResult"></div>
+    </section>
+
+    <section id="primaryTypeStats">
+        <h2>Vil du søge efter deres primary type? Så kan du gøre det her</h2>
+        <input id="pokemonType" type="text" placeholder="Fx Fire">
+        <button onclick="filterType()">Søg</button>
+        <div id="typeResult"></div>
+    </section>
+
+    <section id="attackStats">
+        <h2>Vil du søge efter hvor voldsomme de er? Find deres attack her </h2>
+        <input id="pokemonAttack" type="number" placeholder="Fx 100">
+        <button onclick="filterAttack()">Søg</button>
+        <div id="attackResult"></div>
+    </section>
+</main>
+
+<sript>
+
+</sript>
+const API = 'http://localhost:3000';
+
+
 </body>
 </html>
