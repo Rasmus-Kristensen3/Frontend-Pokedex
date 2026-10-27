@@ -3,11 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>Pokemon Trainers</title>
+    <link rel="stylesheet" href="trainer.css">
+    <script src="trainer.js" defer></script>
 </head>
 <body>
-<h1> Pokemon Trainers</h1>
 
-<h2> All Trainers </h2>
+<header>
+    <nav>
+        <h1>Pokédex</h1>
+
+        <a href="pokemon.html">Pokémon</a>
+        <a href="trainer.html">Trainers</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+</header>
+
+<section>
+<h1>Trainers</h1>
+
+<p>Vælg en trainer, se deres Pokemon, eller opret en ny trainer</p>
+</section>
+
+<section>
+    <h2> Alle Trainers</h2>
+    <div id="trainerList"></div>
+</section>
+
+
+<section id="trainerPokemonSection">
+    <h2 id="selectedTrainerName">Trainerens Pokemon</h2>
+
+    <p id="pokemonCount"></p>
+
+    <div id="trainerPokemon"></div>
+</section>
+
+<section id="addPokemonSection">
+    <h2> Tilføj en Pokemon</h2>
+    <form id="addPokemonForm">
+
+        <input type="hidden"
+                id="trainer_id"
+                name="trainer_id">
+
+        <select id="pokedex_number"
+                name="pokedex_number" required>
+
+            <option value="">Vælg en Pokemon</option>
+        </select>
+        <button type="submit" id="addPokemonBtn">
+            Tilføj Pokemon
+        </button>
+    </form>
+</section>
+
+<section id="createTrainerSection">
+    <button type="button" id="createTrainer">
+        + Opret ny trainer
+    </button>
+
+    <form id="createTrainerForm" hidden>
+        <h2>Opret ny trainer</h2>
+
+        <input type="text"
+               id="new_trainer_name"
+               name="trainer_name"
+               placeholder="Trainer navn" required>
+
+        <input type="number"
+               id="age"
+               name="age"
+               placeholder="Alder" required>
+
+        <input type="text"
+               id="hometown"
+               name="hometown"
+               placeholder="hjemby" required>
+
+        <button type="submit">
+            Opret trainer
+        </button>
+    </form>
+</section>
+
+
 
 </body>
 </html>
