@@ -16,4 +16,18 @@ for (let i = 0; i<allPokemonData.length; i++) {
 name: ${pokemon.name}
 hp: ${pokemon.hp}
        </li>`
-    )}})})
+    )}})});
+
+//Se en liste over alle Pokémon med deres navne og stats.
+function searchPokemon() {
+    const pokeName = document.querySelector('#pokemonName').value.trim();
+
+    fetch('http://localhost:3000/pokemonname?name=' + pokeName)
+        .then(response => response.json())
+        .then(pokemon => {
+            console.log('Resultat:', pokemon);
+        });
+
+}
+
+
