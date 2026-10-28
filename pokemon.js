@@ -26,9 +26,34 @@ function searchPokemon() {
         .then(response => response.json())
         .then(pokemon => {
             console.log('Resultat:', pokemon);
-            document.querySelector('#nameResult').textContent = JSON.stringify(pokemon)
+            document.querySelector('#nameResult').textContent = JSON.stringify(pokemon);
         });
 
 }
 
+// søg efter deres attack værdi
 
+function filterAttack () {
+    const attackValue = document.querySelector('#pokemonAttack').value.trim();
+    fetch('http://localhost:3000/attackvalue?attack=' + attackValue)
+        .then(response => response.json())
+        .then(attack => {
+            console.log('Resultat:', attack);
+            document.querySelector('#attackResult').textContent = JSON.stringify(attack);
+        })
+
+}
+
+// søg efter deres primary type
+
+function filterType() {
+    const primaryType = document.querySelector('#pokemonType').value.trim();
+    fetch('http://localhost:3000/primarytype?type=' + primaryType)
+        .then(response => response.json())
+        .then(type => {
+            console.log('Resultat:',type);
+            document.querySelector('#typeResult').textContent = JSON.stringify(type);
+        })
+}
+
+//
