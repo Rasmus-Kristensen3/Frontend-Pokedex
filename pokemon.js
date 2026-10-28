@@ -26,6 +26,7 @@ function searchPokemon() {
         .then(response => response.json())
         .then(pokemon => {
             console.log('Resultat:', pokemon);
+            document.querySelector('#nameResult').textContent = JSON.stringify(pokemon)
         });
 
 }
