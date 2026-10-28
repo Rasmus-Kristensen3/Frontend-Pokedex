@@ -44,8 +44,7 @@ function filterAttack () {
 
 }
 
-// søg efter deres primary type
-
+// Søg efter deres primary type
 function filterType() {
     const primaryType = document.querySelector('#pokemonType').value.trim();
     fetch('http://localhost:3000/primarytype?type=' + primaryType)
@@ -56,4 +55,25 @@ function filterType() {
         })
 }
 
-//
+// så clear buttons virker
+function clearAllPokemon() {
+    document.querySelector('#showAllPokemonList').innerHTML = '';
+    document.querySelector('#allPokemonResult').textContent = '';
+}
+
+function clearPokemonName() {
+    document.querySelector('#pokemonName').value = '';
+    document.querySelector('#nameResult').textContent = '';
+}
+
+function clearPokemonType() {
+    document.querySelector('#pokemonType').value = '';
+    document.querySelector('#typeResult').textContent = '';
+}
+
+
+// Clear attack-stats
+function clearPokemonStats() {
+    document.querySelector('#pokemonAttack').value = '';
+    document.querySelector('#attackResult').textContent = '';
+}
