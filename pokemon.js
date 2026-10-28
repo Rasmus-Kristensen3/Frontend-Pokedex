@@ -1,4 +1,4 @@
-//
+
 // allpokemonbutton
 fetch("http://localhost:3000/allpokemon")
 .then(response => response.json())
