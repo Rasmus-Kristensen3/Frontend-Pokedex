@@ -40,16 +40,7 @@
         <div id="attackResult"></div>
     </section>
 </main>
-<script>
-    const API = 'http://localhost:3000';
-
-    async function getAllPokemon() {
-        const response = await fetch(API + '/allPokemon');
-        const data = await response.json();
-
-        document.getElementById('allPokemonResult').textContent =
-            JSON.stringify(data, null, 2);
-    }
+<script src="pokemon.js">
 </script>
 </body>
 </html>
