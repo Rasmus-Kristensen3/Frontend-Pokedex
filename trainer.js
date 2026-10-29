@@ -39,7 +39,7 @@ fetch(`http://localhost:3000/pokemontrainersown?trainer_name=${allTrainersData[j
     })
     allTrainersList.appendChild(allTrainerNamesLi);}
     })
-// 2)Se hvilke Pokémon en bestemt trainer ejer.
+// 2)Se hvilke Pokémon en bestemt trainer ejer. det her er det som er tilføjet til den første funktion.
 /*
 allTrainerNamesLi.addEventListener("click", ()=> {
 fetch(`http://localhost:3000/pokemontrainersown?trainer_name=${allTrainersData[j].name}`)
