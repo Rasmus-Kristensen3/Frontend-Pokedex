@@ -1,79 +1,140 @@
 
 // allpokemonbutton
-fetch("http://localhost:3000/allpokemon")
-.then(response => response.json())
-.then(allPokemonData => {console.log(allPokemonData)
-const showAllPokemonButton = document.querySelector("#showAllPokemonButton")
-    const showAllPokemonList = document.querySelector("#showAllPokemonList")
-showAllPokemonButton.addEventListener("click", ()=> {
+fetch("http://localhost:3000/allPokemon")
+    .then(response => response.json())
+    .then(allPokemonData => {
+        console.log(allPokemonData);
+
+        const showAllPokemonButton = document.querySelector("#showAllPokemonButton");
+        const showAllPokemonList = document.querySelector("#showAllPokemonList");
+
+        showAllPokemonButton.addEventListener("click", () => {
+            showAllPokemonList.replaceChildren();
+
+            for (let i = 0; i < allPokemonData.length; i++) {
+                const pokemon = allPokemonData[i];
+
+                const pokemonLi = document.createElement("li");
+                pokemonLi.textContent = pokemon.name;
+
+                showAllPokemonList.appendChild(pokemonLi);
+            }
+        });
+    });
 
 
-    showAllPokemonList.innerHTML = "";
-for (let i = 0; i<allPokemonData.length; i++) {
-    const pokemon = allPokemonData[i]
-    showAllPokemonList.insertAdjacentHTML("beforeend",
-        `<li>
-name: ${pokemon.name}
-hp: ${pokemon.hp}
-       </li>`
-    )}})});
-
-//Se en liste over alle Pokémon med deres navne og stats.
+//Pokémon med dens stats ved at søge på navn
 function searchPokemon() {
     const pokeName = document.querySelector('#pokemonName').value.trim();
 
-    fetch('http://localhost:3000/pokemonname?name=' + pokeName)
+    fetch('http://localhost:3000/pokemonname?name=' + encodeURIComponent(pokeName))
         .then(response => response.json())
         .then(pokemon => {
             console.log('Resultat:', pokemon);
-            document.querySelector('#nameResult').textContent = JSON.stringify(pokemon);
+            showPokemonList(pokemon, document.querySelector('#nameResult'));
         });
-
 }
 
-// søg efter deres attack værdi
 
-function filterAttack () {
+// Søg efter Pokémon med attack over en bestemt værdi
+function filterAttack() {
     const attackValue = document.querySelector('#pokemonAttack').value.trim();
-    fetch('http://localhost:3000/attackvalue?attack=' + attackValue)
+
+    fetch('http://localhost:3000/attackvalue?attack=' + encodeURIComponent(attackValue))
         .then(response => response.json())
         .then(attack => {
             console.log('Resultat:', attack);
-            document.querySelector('#attackResult').textContent = JSON.stringify(attack);
-        })
-
+            showPokemonList(attack, document.querySelector('#attackResult'));
+        });
 }
 
-// Søg efter deres primary type
+
+// Søg efter Pokémon efter primary type
 function filterType() {
     const primaryType = document.querySelector('#pokemonType').value.trim();
-    fetch('http://localhost:3000/primarytype?type=' + primaryType)
+
+    fetch('http://localhost:3000/primarytype?type=' + encodeURIComponent(primaryType))
         .then(response => response.json())
         .then(type => {
-            console.log('Resultat:',type);
-            document.querySelector('#typeResult').textContent = JSON.stringify(type);
-        })
+            console.log('Resultat:', type);
+            showPokemonList(type, document.querySelector('#typeResult'));
+        });
 }
 
-// så clear buttons virker
+
+// Labels til Pokémon-stats
+const pokemonLabels = {
+    hp: "HP",
+    attack: "Attack",
+    defence: "Defense",
+    speed: "Speed",
+    special_attack: "Special attack",
+    special_defence: "Special defense",
+    primary_type: "Primary type",
+    secondary_type: "Secondary type"
+};
+
+
+// Vis søgeresultater pænt
+function showPokemonList(pokemonData, resultElement) {
+    resultElement.replaceChildren();
+
+    if (!Array.isArray(pokemonData)) {
+        const message = document.createElement("p");
+        message.textContent = pokemonData;
+        resultElement.appendChild(message);
+        return;
+    }
+
+    if (pokemonData.length === 0) {
+        const message = document.createElement("p");
+        message.textContent = "Ingen Pokémon fundet.";
+        resultElement.appendChild(message);
+        return;
+    }
+
+    const list = document.createElement("ul");
+
+    for (let i = 0; i < pokemonData.length; i++) {
+        const pokemon = pokemonData[i];
+        const pokemonLi = document.createElement("li");
+
+        const heading = document.createElement("h3");
+        heading.textContent = pokemon.name;
+        pokemonLi.appendChild(heading);
+
+        for (const key of Object.keys(pokemonLabels)) {
+            if (pokemon[key] !== undefined && pokemon[key] !== null) {
+                const stat = document.createElement("p");
+                stat.textContent = pokemonLabels[key] + ": " + pokemon[key];
+                pokemonLi.appendChild(stat);
+            }
+        }
+
+        list.appendChild(pokemonLi);
+    }
+
+    resultElement.appendChild(list);
+}
+
+
+// Clear-knapperne
 function clearAllPokemon() {
-    document.querySelector('#showAllPokemonList').innerHTML = '';
-    document.querySelector('#allPokemonResult').textContent = '';
+    document.querySelector('#showAllPokemonList').replaceChildren();
+    document.querySelector('#allPokemonResult').replaceChildren();
 }
 
 function clearPokemonName() {
     document.querySelector('#pokemonName').value = '';
-    document.querySelector('#nameResult').textContent = '';
+    document.querySelector('#nameResult').replaceChildren();
 }
 
 function clearPokemonType() {
     document.querySelector('#pokemonType').value = '';
-    document.querySelector('#typeResult').textContent = '';
+    document.querySelector('#typeResult').replaceChildren();
 }
 
-
-// Clear attack-stats
 function clearPokemonStats() {
     document.querySelector('#pokemonAttack').value = '';
-    document.querySelector('#attackResult').textContent = '';
+    document.querySelector('#attackResult').replaceChildren();
 }
