@@ -87,3 +87,70 @@ fetch('http://localhost:3000/chartfortrainersxpokemons')
         });
     })
     .catch(error => console.error('Error loading trainer chart:', error));
+    .catch(error => console.error('Error loading trainer chart:', error));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fetch('http://localhost:3000/howmanypokemonmoves')
+.then(response => response.json())
+.then(howManyMovesData => {console.log(howManyMovesData[0].Moves)
+const movesCountP = document.querySelector("#movesCount")
+    movesCountP.textContent = `${howManyMovesData[0].Moves} Moves in total`
+});
