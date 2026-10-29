@@ -1,5 +1,68 @@
 
+// allpokemonbutton
+fetch("http://localhost:3000/allPokemon")
+    .then(response => response.json())
+    .then(allPokemonData => {
+        console.log(allPokemonData);
 
+        const showAllPokemonButton = document.querySelector("#showAllPokemonButton");
+        const showAllPokemonList = document.querySelector("#showAllPokemonList");
+
+        showAllPokemonButton.addEventListener("click", () => {
+            showAllPokemonList.replaceChildren();
+
+            for (let i = 0; i < allPokemonData.length; i++) {
+                const pokemon = allPokemonData[i];
+
+                const pokemonLi = document.createElement("li");
+                pokemonLi.textContent = pokemon.name;
+
+                showAllPokemonList.appendChild(pokemonLi);
+            }
+        });
+    });
+
+
+//Pokémon med dens stats ved at søge på navn
+function searchPokemon() {
+    const pokeName = document.querySelector('#pokemonName').value.trim();
+
+    fetch('http://localhost:3000/pokemonname?name=' + encodeURIComponent(pokeName))
+        .then(response => response.json())
+        .then(pokemon => {
+            console.log('Resultat:', pokemon);
+            showPokemonList(pokemon, document.querySelector('#nameResult'));
+        });
+}
+
+
+// Søg efter Pokémon med attack over en bestemt værdi
+function filterAttack() {
+    const attackValue = document.querySelector('#pokemonAttack').value.trim();
+
+    fetch('http://localhost:3000/attackvalue?attack=' + encodeURIComponent(attackValue))
+        .then(response => response.json())
+        .then(attack => {
+            console.log('Resultat:', attack);
+            showPokemonList(attack, document.querySelector('#attackResult'));
+        });
+}
+
+
+// Søg efter Pokémon efter primary type
+function filterType() {
+    const primaryType = document.querySelector('#pokemonType').value.trim();
+
+    fetch('http://localhost:3000/primarytype?type=' + encodeURIComponent(primaryType))
+        .then(response => response.json())
+        .then(type => {
+            console.log('Resultat:', type);
+            showPokemonList(type, document.querySelector('#typeResult'));
+        });
+}
+
+
+// Labels til Pokémon-stats
 const pokemonLabels = {
     hp: "HP",
     attack: "Attack",
@@ -12,7 +75,7 @@ const pokemonLabels = {
 };
 
 
-// Funktion til at vise Pokémon pænt
+// Vis søgeresultater pænt
 function showPokemonList(pokemonData, resultElement) {
     resultElement.replaceChildren();
 
@@ -34,159 +97,44 @@ function showPokemonList(pokemonData, resultElement) {
 
     for (let i = 0; i < pokemonData.length; i++) {
         const pokemon = pokemonData[i];
-        const pokemonItem = document.createElement("li");
+        const pokemonLi = document.createElement("li");
 
         const heading = document.createElement("h3");
         heading.textContent = pokemon.name;
-        pokemonItem.appendChild(heading);
-
-        const statsList = document.createElement("ul");
+        pokemonLi.appendChild(heading);
 
         for (const key of Object.keys(pokemonLabels)) {
             if (pokemon[key] !== undefined && pokemon[key] !== null) {
-                const stat = document.createElement("li");
-                stat.textContent =
-                    `${pokemonLabels[key]}: ${pokemon[key]}`;
-
-                statsList.appendChild(stat);
+                const stat = document.createElement("p");
+                stat.textContent = pokemonLabels[key] + ": " + pokemon[key];
+                pokemonLi.appendChild(stat);
             }
         }
 
-        pokemonItem.appendChild(statsList);
-        list.appendChild(pokemonItem);
+        list.appendChild(pokemonLi);
     }
 
     resultElement.appendChild(list);
 }
 
 
-// Håndter både JSON og almindelige tekstbeskeder fra backend
-function getPokemonData(url, resultElement) {
-    fetch(url)
-        .then(response => response.text())
-        .then(result => {
-            let pokemonData;
-
-            try {
-                pokemonData = JSON.parse(result);
-            } catch {
-                pokemonData = result;
-            }
-
-            showPokemonList(pokemonData, resultElement);
-        })
-        .catch(error => {
-            console.log("Fejl:", error);
-
-            showPokemonList(
-                "Der opstod en fejl under søgningen.",
-                resultElement
-            );
-        });
-}
-
-// Vis alle Pokémon
-fetch("http://localhost:3000/allPokemon")
-    .then(response => response.json())
-    .then(allPokemonData => {
-        const button =
-            document.querySelector("#showAllPokemonButton");
-
-        const list =
-            document.querySelector("#showAllPokemonList");
-
-        button.addEventListener("click", () => {
-            showPokemonList(allPokemonData, list);
-        });
-    })
-    .catch(error => console.log("Fejl:", error));
-
-
-// Søg efter Pokémon ved navn
-function searchPokemon() {
-    const pokeName =
-        document.querySelector("#pokemonName").value.trim();
-
-    const resultElement =
-        document.querySelector("#nameResult");
-
-    if (pokeName === "") {
-        showPokemonList("Skriv et Pokémon-navn.", resultElement);
-        return;
-    }
-
-    getPokemonData(
-        "http://localhost:3000/pokemonname?name=" +
-        encodeURIComponent(pokeName),
-        resultElement
-    );
-}
-
-
-// Søg efter Pokémon med attack over en bestemt værdi
-function filterAttack() {
-    const attackValue =
-        document.querySelector("#pokemonAttack").value.trim();
-
-    const resultElement =
-        document.querySelector("#attackResult");
-
-    if (attackValue === "") {
-        showPokemonList("Skriv en attack-værdi.", resultElement);
-        return;
-    }
-
-    getPokemonData(
-        "http://localhost:3000/attackvalue?attack=" +
-        encodeURIComponent(attackValue),
-        resultElement
-    );
-}
-
-
-// Søg efter Pokémon efter primary type
-function filterType() {
-    const primaryType =
-        document.querySelector("#pokemonType").value.trim();
-
-    const resultElement =
-        document.querySelector("#typeResult");
-
-    if (primaryType === "") {
-        showPokemonList("Skriv en primary type.", resultElement);
-        return;
-    }
-
-    getPokemonData(
-        "http://localhost:3000/primarytype?type=" +
-        encodeURIComponent(primaryType),
-        resultElement
-    );
-}
-
-
-// Clear alle Pokémon
+// Clear-knapperne
 function clearAllPokemon() {
-    document.querySelector("#showAllPokemonList").replaceChildren();
-    document.querySelector("#allPokemonResult").replaceChildren();
+    document.querySelector('#showAllPokemonList').replaceChildren();
+    document.querySelector('#allPokemonResult').replaceChildren();
 }
 
-
-// Clear Pokémon-navn
 function clearPokemonName() {
-    document.querySelector("#pokemonName").value = "";
-    document.querySelector("#nameResult").replaceChildren();
+    document.querySelector('#pokemonName').value = '';
+    document.querySelector('#nameResult').replaceChildren();
 }
 
-
-// Clear primary type
 function clearPokemonType() {
-    document.querySelector("#pokemonType").value = "";
-    document.querySelector("#typeResult").replaceChildren();
+    document.querySelector('#pokemonType').value = '';
+    document.querySelector('#typeResult').replaceChildren();
 }
 
-// Clear attack-stats
 function clearPokemonStats() {
-    document.querySelector("#pokemonAttack").value = "";
-    document.querySelector("#attackResult").replaceChildren();
+    document.querySelector('#pokemonAttack').value = '';
+    document.querySelector('#attackResult').replaceChildren();
 }
