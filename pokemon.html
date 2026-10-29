@@ -15,6 +15,7 @@
 <main>
     <section>
         <h2>Der er så mange pokemons i denne verden. Her kan du se dem ALLE </h2>
+        <button onclick="getallPokemon()">Hvis dem ALLE</button>
         <button id = "showAllPokemonButton" >Hvis dem ALLE</button>
         <button onclick="clearAllPokemon()">Clear</button>
         <ul id= "showAllPokemonList">  </ul>
@@ -25,7 +26,6 @@
         <h2>Søg efter en pokemon og se dens stats</h2>
         <input id="pokemonName" type="text" placeholder="Fx Ivysaur">
         <button onclick="searchPokemon()">Søg</button>
-        <button onclick="clearPokemonName()">Clear</button>
         <div id="nameResult"></div>
     </section>
 
@@ -33,7 +33,6 @@
         <h2>Vil du søge efter deres primary type? Så kan du gøre det her</h2>
         <input id="pokemonType" type="text" placeholder="Fx Fire">
         <button onclick="filterType()">Søg</button>
-        <button onclick="clearPokemonType()">Clear</button>
         <div id="typeResult"></div>
     </section>
 
@@ -41,11 +40,20 @@
         <h2>Vil du søge efter hvor voldsomme de er? Find deres attack her </h2>
         <input id="pokemonAttack" type="number" placeholder="Fx 100">
         <button onclick="filterAttack()">Søg</button>
-        <button onclick="clearPokemonStats()">Clear</button>
         <div id="attackResult"></div>
     </section>
 </main>
-<script src="pokemon.js">
+<script>
+    const API = 'http://localhost:3000';
+
+    async function getAllPokemon() {
+        const response = await fetch(API + '/allPokemon');
+        const data = await response.json();
+
+        document.getElementById('allPokemonResult').textContent =
+            JSON.stringify(data, null, 2);
+    }
 </script>
+<script src = "pokemon.js"></script>
 </body>
 </html>
