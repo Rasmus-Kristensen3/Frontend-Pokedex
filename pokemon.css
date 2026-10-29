@@ -1,0 +1,138 @@
+/* Hele siden */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff8f2;
+    color: #243246;
+}
+
+/* Header */
+header {
+    background-color: white;
+    padding: 20px 7%;
+    border-bottom: 1px solid #eeeeee;
+}
+
+header h1 {
+    color: #e5252a;
+    font-size: 32px;
+    margin: 0 0 10px;
+}
+
+header p {
+    color: #788596;
+    margin: 0;
+}
+
+/* Hovedindhold */
+main {
+    padding: 30px 7%;
+}
+
+/* Sektioner */
+section {
+    margin-bottom: 35px;
+}
+
+h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+/* Inputfelter */
+input {
+    box-sizing: border-box;
+    padding: 16px;
+    width: 280px;
+    max-width: 100%;
+    border: 1px solid #d6e2ef;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+/* Knapper */
+button {
+    padding: 15px 22px;
+    border: none;
+    border-radius: 9px;
+    background-color: #e5252a;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px 5px 5px 0;
+}
+
+button:hover {
+    background-color: #c91e24;
+}
+
+/* Alle Pokémon */
+#showAllPokemonList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+#showAllPokemonList li {
+    background-color: white;
+    border: 1px solid #d6e2ef;
+    border-radius: 14px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Søgeresultater */
+#nameResult ul,
+#typeResult ul,
+#attackResult ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+#nameResult li,
+#typeResult li,
+#attackResult li {
+    background-color: white;
+    border: 1px solid #d6e2ef;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+#nameResult h3,
+#typeResult h3,
+#attackResult h3 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+/* Mobil */
+@media (max-width: 700px) {
+    main {
+        padding: 20px;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    #showAllPokemonList,
+    #nameResult ul,
+    #typeResult ul,
+    #attackResult ul {
+        grid-template-columns: 1fr;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
