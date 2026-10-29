@@ -146,47 +146,6 @@ function showPokemonList(pokemonData, resultElement) {
 
 }
 
-// Vis søgeresultater pænt
-function showPokemonList(pokemonData, resultElement) {
-    resultElement.replaceChildren();
-
-    if (!Array.isArray(pokemonData)) {
-        const message = document.createElement("p");
-        message.textContent = pokemonData;
-        resultElement.appendChild(message);
-        return;
-    }
-
-    if (pokemonData.length === 0) {
-        const message = document.createElement("p");
-        message.textContent = "Ingen Pokémon fundet.";
-        resultElement.appendChild(message);
-        return;
-    }
-
-    const list = document.createElement("ul");
-
-    for (let i = 0; i < pokemonData.length; i++) {
-        const pokemon = pokemonData[i];
-        const pokemonLi = document.createElement("li");
-
-        const heading = document.createElement("h3");
-        heading.textContent = pokemon.name;
-        pokemonLi.appendChild(heading);
-
-        for (const key of Object.keys(pokemonLabels)) {
-            if (pokemon[key] !== undefined && pokemon[key] !== null) {
-                const stat = document.createElement("p");
-                stat.textContent = pokemonLabels[key] + ": " + pokemon[key];
-                pokemonLi.appendChild(stat);
-            }
-        }
-
-        list.appendChild(pokemonLi);
-    }
-
-    resultElement.appendChild(list);
-}
 
 
 // Clear-knapperne
