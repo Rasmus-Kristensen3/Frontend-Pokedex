@@ -40,14 +40,13 @@ fetch("http://localhost:3000/allPokemon")
                         pokemonLi.appendChild(stat);
                     }
                 }
-                pokemonLi.textContent = pokemon.name;
 
                 showAllPokemonList.appendChild(pokemonLi);
             }
         });
     })
     .catch(error => console.error("Fejl ved hentning af Pokémon:", error));
-    });
+
 
 
 //Pokémon med dens stats ved at søge på navn
@@ -142,24 +141,10 @@ function showPokemonList(pokemonData, resultElement) {
     }
 
     resultElement.appendChild(list);
+
+
+
 }
-
-
-}
-
-
-// Labels til Pokémon-stats
-const pokemonLabels = {
-    hp: "HP",
-    attack: "Attack",
-    defence: "Defense",
-    speed: "Speed",
-    special_attack: "Special attack",
-    special_defence: "Special defense",
-    primary_type: "Primary type",
-    secondary_type: "Secondary type"
-};
-
 
 // Vis søgeresultater pænt
 function showPokemonList(pokemonData, resultElement) {
