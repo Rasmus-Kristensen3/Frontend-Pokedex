@@ -1,5 +1,5 @@
 
-// allpokemonbutton
+// Vis alle Pokémon med deres stats
 fetch("http://localhost:3000/allPokemon")
     .then(response => response.json())
     .then(allPokemonData => {
@@ -15,13 +15,36 @@ fetch("http://localhost:3000/allPokemon")
                 const pokemon = allPokemonData[i];
 
                 const pokemonLi = document.createElement("li");
-                pokemonLi.textContent = pokemon.name;
+
+                const heading = document.createElement("h3");
+                heading.textContent = pokemon.name;
+                pokemonLi.appendChild(heading);
+
+                const stats = [
+                    ["Pokédex number", pokemon.pokedex_number],
+                    ["HP", pokemon.hp],
+                    ["Attack", pokemon.attack],
+                    ["Defense", pokemon.defence ?? pokemon.defense],
+                    ["Speed", pokemon.speed],
+                    ["Special attack", pokemon.special_attack],
+                    ["Special defense", pokemon.special_defence ?? pokemon.special_defense],
+                    ["Primary type", pokemon.primary_type],
+                    ["Secondary type", pokemon.secondary_type]
+                ];
+
+                for (const [label, value] of stats) {
+                    if (value !== undefined && value !== null && value !== "") {
+                        const stat = document.createElement("p");
+                        stat.textContent = label + ": " + value;
+                        pokemonLi.appendChild(stat);
+                    }
+                }
 
                 showAllPokemonList.appendChild(pokemonLi);
             }
         });
-    });
-
+    })
+    .catch(error => console.error("Fejl ved hentning af Pokémon:", error));
 
 //Pokémon med dens stats ved at søge på navn
 function searchPokemon() {

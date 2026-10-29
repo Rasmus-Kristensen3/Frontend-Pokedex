@@ -9,34 +9,60 @@ body {
 /* Header */
 header {
     background-color: white;
-    padding: 20px 7%;
+    padding: 25px 7%;
     border-bottom: 1px solid #eeeeee;
 }
 
 header h1 {
     color: #e5252a;
-    font-size: 32px;
+    font-size: 36px;
     margin: 0 0 10px;
+}
+
+header h3 {
+    color: #e5252a;
+    font-size: 20px;
+    margin: 0 0 5px;
+    font-style: italic;
 }
 
 header p {
     color: #788596;
     margin: 0;
+    font-size: 18px;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+nav a {
+    color: #e5252a;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
 
 /* Hovedindhold */
 main {
-    padding: 30px 7%;
+    padding: 35px 7%;
 }
 
 /* Sektioner */
 section {
-    margin-bottom: 35px;
+    margin-bottom: 40px;
 }
 
 h2 {
-    font-size: 26px;
+    font-size: 28px;
     margin-bottom: 20px;
+    color: #243246;
 }
 
 /* Inputfelter */
@@ -52,11 +78,16 @@ input {
     margin-right: 8px;
 }
 
+input:focus {
+    outline: 2px solid #e5252a;
+    outline-offset: 1px;
+}
+
 /* Knapper */
 button {
     padding: 15px 22px;
     border: none;
-    border-radius: 9px;
+    border-radius: 10px;
     background-color: #e5252a;
     color: white;
     font-size: 16px;
@@ -73,18 +104,37 @@ button:hover {
 #showAllPokemonList {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    gap: 24px;
     padding: 0;
+    margin-top: 25px;
     list-style: none;
 }
 
+/* Pokémon-kort */
 #showAllPokemonList li {
-    background-color: white;
+    box-sizing: border-box;
+    background-color: #d9f0d8 ;
     border: 1px solid #d6e2ef;
-    border-radius: 14px;
-    padding: 20px;
-    font-size: 20px;
-    font-weight: bold;
+    border-radius: 16px;
+    padding: 24px;
+    font-size: 16px;
+    font-weight: normal;
+    overflow-wrap: anywhere;
+}
+
+/* Pokémon-navn */
+#showAllPokemonList li h3 {
+    font-size: 26px;
+    margin: 0 0 15px;
+    color: #243246;
+}
+
+/* Pokémon-stats */
+#showAllPokemonList li p {
+    font-size: 16px;
+    color: #526174;
+    margin: 8px 0;
+    line-height: 1.5;
 }
 
 /* Søgeresultater */
@@ -93,28 +143,46 @@ button:hover {
 #attackResult ul {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    gap: 24px;
     padding: 0;
+    margin-top: 25px;
     list-style: none;
 }
 
+/* feltet hvor man søger efter deres stats */
 #nameResult li,
 #typeResult li,
 #attackResult li {
-    background-color: white;
+    box-sizing: border-box;
+    background-color: #d9f0d8;
     border: 1px solid #d6e2ef;
-    border-radius: 14px;
-    padding: 20px;
+    border-radius: 16px;
+    padding: 24px;
+    font-size: 16px;
+    font-weight: normal;
+    overflow-wrap: anywhere;
 }
 
+/* Navne i søgeresultater */
 #nameResult h3,
 #typeResult h3,
 #attackResult h3 {
-    font-size: 24px;
+    font-size: 26px;
     margin-top: 0;
+    color: #243246;
 }
 
-/* Mobil */
+/* Stats i søgeresultater skrift */
+#nameResult li p,
+#typeResult li p,
+#attackResult li p {
+    color: #526174;
+    font-size: 16px;
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* Mobilvisning */
 @media (max-width: 700px) {
     main {
         padding: 20px;
@@ -134,5 +202,9 @@ button:hover {
     input {
         width: 100%;
         margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 23px;
     }
 }
