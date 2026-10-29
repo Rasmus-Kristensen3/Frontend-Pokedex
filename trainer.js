@@ -98,4 +98,89 @@ createTrainerForm.addEventListener("submit", function (event) {
         console.log(error);
     })
 
+});
+
+function getTrainers(){
+    fetch("http://localhost:3000/alltrainers")
+        .then(response => response.json())
+        .then(trainers => {
+            const trainerList = document.querySelector("#trainerList");
+            trainerList.innerText ="";
+
+            trainers.forEach(trainer =>{
+                const button = document.createElement("button");
+
+                button.textContent = trainer.name;
+                button.type = "button";
+
+                button.addEventListener("click", function () {
+                    document.querySelector("#trainer_id").value = trainer.trainer_id;
+
+                    // vise hvilke trainer vi har valgt
+                    document.querySelector("#selectedTrainerName").textContent =
+                        trainer.name +"s Pokémon";
+                });
+
+                trainerList.appendChild(button);
+            });
+        });
+}
+
+getTrainers();
+
+
+fetch("http://localhost:3000/allpokemon")
+.then(response => response.json())
+.then(pokemons => {
+    console.log(pokemons);
+
+    pokemons.sort((a, b) => a.name.localeCompare(b.name));
+    const pokemonSelect = document.querySelector("#pokedex_number");
+    pokemons.forEach(pokemon => {
+        const option = document.createElement("option");
+
+        option.textContent = pokemon.name;
+        option.value = pokemon.pokedex_number;
+
+        pokemonSelect.appendChild(option);
+    });
+});
+
+
+
+const addPokemonForm = document.querySelector("#addPokemonForm");
+
+addPokemonForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const trainer_id = document.querySelector("#trainer_id").value;
+    const pokedex_number = document.querySelector("#pokedex_number").value;
+
+    if (trainer_id === "") {
+        alert("Du skal vælge en trainer først");
+        return;
+    }
+
+    fetch("http://localhost:3000/trainer/add", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            trainer_id: Number(trainer_id),
+            pokedex_number: Number(pokedex_number)
+        })
+    })
+        .then(response => {
+            if (!response.ok){
+                throw new Error("Kunne ikke tilføje pokemon");
+            }
+            return response.text();
+        })
+        .then(data => {
+            alert(data);
+        })
+        .catch(error => {
+            alert(error.message);
+        });
 })
