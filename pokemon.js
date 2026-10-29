@@ -40,14 +40,13 @@ fetch("http://localhost:3000/allPokemon")
                         pokemonLi.appendChild(stat);
                     }
                 }
-                pokemonLi.textContent = pokemon.name;
 
                 showAllPokemonList.appendChild(pokemonLi);
             }
         });
     })
     .catch(error => console.error("Fejl ved hentning af Pokémon:", error));
-    });
+
 
 
 //Pokémon med dens stats ved at søge på navn
@@ -142,66 +141,11 @@ function showPokemonList(pokemonData, resultElement) {
     }
 
     resultElement.appendChild(list);
+
+
+
 }
 
-
-}
-
-
-// Labels til Pokémon-stats
-const pokemonLabels = {
-    hp: "HP",
-    attack: "Attack",
-    defence: "Defense",
-    speed: "Speed",
-    special_attack: "Special attack",
-    special_defence: "Special defense",
-    primary_type: "Primary type",
-    secondary_type: "Secondary type"
-};
-
-
-// Vis søgeresultater pænt
-function showPokemonList(pokemonData, resultElement) {
-    resultElement.replaceChildren();
-
-    if (!Array.isArray(pokemonData)) {
-        const message = document.createElement("p");
-        message.textContent = pokemonData;
-        resultElement.appendChild(message);
-        return;
-    }
-
-    if (pokemonData.length === 0) {
-        const message = document.createElement("p");
-        message.textContent = "Ingen Pokémon fundet.";
-        resultElement.appendChild(message);
-        return;
-    }
-
-    const list = document.createElement("ul");
-
-    for (let i = 0; i < pokemonData.length; i++) {
-        const pokemon = pokemonData[i];
-        const pokemonLi = document.createElement("li");
-
-        const heading = document.createElement("h3");
-        heading.textContent = pokemon.name;
-        pokemonLi.appendChild(heading);
-
-        for (const key of Object.keys(pokemonLabels)) {
-            if (pokemon[key] !== undefined && pokemon[key] !== null) {
-                const stat = document.createElement("p");
-                stat.textContent = pokemonLabels[key] + ": " + pokemon[key];
-                pokemonLi.appendChild(stat);
-            }
-        }
-
-        list.appendChild(pokemonLi);
-    }
-
-    resultElement.appendChild(list);
-}
 
 
 // Clear-knapperne
