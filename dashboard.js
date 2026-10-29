@@ -87,6 +87,7 @@ fetch('http://localhost:3000/chartfortrainersxpokemons')
         });
     })
     .catch(error => console.error('Error loading trainer chart:', error));
+    .catch(error => console.error('Error loading trainer chart:', error));
 
 
 
