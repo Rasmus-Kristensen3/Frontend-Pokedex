@@ -44,3 +44,112 @@ async function loadLowestSpeed() {
 
 loadAvgAttack();
 loadLowestSpeed();
+
+// Chart 3:  En liste over Pokemons med gennemsnitlige samlede stats, DESC liste.
+
+fetch('http://localhost:3000/higheststatpokemons')
+    .then(response => response.json())
+    .then(data => {
+        new Chart(document.getElementById('highestStatsChart'), {
+            type: 'bar',
+            data: {
+                labels: data.map(pokemon => pokemon.name),
+                datasets: [{
+                    label: 'Average Stats',
+                    data: data.map(pokemon => pokemon.Average_Stats)
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    })
+    .catch(error => console.error('Error loading Pokémon chart:', error));
+
+
+// Chart 4: Hvilke trainers har flest Pokémon?
+
+fetch('http://localhost:3000/chartfortrainersxpokemons')
+    .then(response => response.json())
+    .then(data => {
+        new Chart(document.getElementById('trainerPokemonChart'), {
+            type: 'bar',
+            data: {
+                labels: data.map(trainer => `Trainer ${trainer.trainer_id}`),
+                datasets: [{
+                    label: 'Number of Pokémon',
+                    data: data.map(trainer => trainer.number_of_pokemon)
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    })
+    .catch(error => console.error('Error loading trainer chart:', error));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fetch('http://localhost:3000/howmanypokemonmoves')
+.then(response => response.json())
+.then(howManyMovesData => {console.log(howManyMovesData[0].Moves)
+const movesCountP = document.querySelector("#movesCount")
+    movesCountP.textContent = `${howManyMovesData[0].Moves} Moves in total`
+});
