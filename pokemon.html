@@ -21,8 +21,8 @@
 <main>
     <section>
         <h2>Der er så mange pokemons i denne verden. Her kan du se dem ALLE </h2>
-        <button id = "showAllPokemonButton" >vis dem ALLE</button>
-        <button onclick="clearAllPokemon()">Clear</button>
+        <button id = "showAllPokemonButton" >Hvis dem ALLE</button>
+        <button id="clearAllPokemon">Clear</button>
         <ul id= "showAllPokemonList">  </ul>
         <div id="allPokemonResult"></div>
     </section>
@@ -30,24 +30,24 @@
     <section id="nameStats">
         <h2>Søg efter en pokemon og se dens stats</h2>
         <input id="pokemonName" type="text" placeholder="Fx Ivysaur">
-        <button onclick="searchPokemon()">Søg</button>
-        <button onclick="clearPokemonName()">Clear</button>
+        <button id="searchPokemonStats">Søg</button>
+        <button id="clearPokemonNameStats">Clear</button>
         <div id="nameResult"></div>
     </section>
 
     <section id="primaryTypeStats">
         <h2>Vil du søge efter deres primary type? Så kan du gøre det her</h2>
         <input id="pokemonType" type="text" placeholder="Fx Fire">
-        <button onclick="filterType()">Søg</button>
-        <button onclick="clearPokemonType()">Clear</button>
+        <button id="SearchType">Søg</button>
+        <button id="clearType">Clear</button>
         <div id="typeResult"></div>
     </section>
 
     <section id="attackStats">
         <h2>Vil du søge efter hvor voldsomme de er? Find deres attack her </h2>
         <input id="pokemonAttack" type="number" placeholder="Fx 100">
-        <button onclick="filterAttack()">Søg</button>
-        <button onclick="clearPokemonStats()">Clear</button>
+        <button id="SearchAttack">Søg</button>
+        <button id="clearPokemonStats">Clear</button>
         <div id="attackResult"></div>
     </section>
 </main>
