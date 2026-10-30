@@ -153,3 +153,19 @@ fetch('http://localhost:3000/howmanypokemonmoves')
 const movesCountP = document.querySelector("#movesCount")
     movesCountP.textContent = `${howManyMovesData[0].Moves} Moves in total`
 });
+
+
+
+
+
+
+
+
+
+// hvor mange pokemon
+fetch('http://localhost:3000/howmanypokemon')
+    .then(response => response.json())
+    .then(howManyPokemonData => {console.log(howManyPokemonData[[0]])
+        const pokemonCountP = document.querySelector("#pokemonCount")
+        pokemonCountP.textContent = `${howManyPokemonData[0].TotalPokemon} Pokemon in total`
+    })
