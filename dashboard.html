@@ -1,35 +1,78 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
+
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<main>
-    <h1>Pokémon Dashboard</h1>
 
     <p id = "movesCount"></p>
     <p id = "pokemonCount"></p>
+<header class="navbar">
+    <div class="logo"> Pokédex </div>
+    <nav class="links">
+        <a href="pokemon.html">Pokémon</a>
+        <a href="trainer.html">Trainers</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+    </nav>
+
+</header>
+
+<div class="dashboard-container">
+    <h3>Dashboard</h3>
+    <p class="tekst1">
+    Statistik fra vores Pokémon-database via vores API
+    </p>
+</div>
+
+<div class="dashboard-stats">
+    <section class="pokemon">
+    <h3>Pokémon i databasen</h3>
+
+    </section>
+
+    <section class="moves">
+    <h3>Moves i databasen</h3>
+        <p id = "movesCount"></p>
+    </section>
     <section>
         <h2>Gennemsnitlig attack pr. type</h2>
+
+
+    movescount
+    </section>
+
+    <section class="trainers">
+    <h3>Trainers</h3>
+    </section>
+</div>
+
+<main class="container">
+
+    <section class="chart1">
+        <h4>Gennemsnitlig attack pr. type</h4>
         <canvas id="avgAttackChart"></canvas>
     </section>
 
-    <section>
-        <h2>Laveste gennemsnitlige speed pr. type</h2>
+    <section class="chart2">
+        <h4>Laveste gennemsnitlige speed pr. type</h4>
         <p id="lowestSpeedText"></p>
         <canvas id="lowestSpeedChart"></canvas>
     </section>
 
-    <section>
-        <h2>Pokémon med den højeste gennemsnitlige overall stat</h2>
+    <section class="chart3">
+        <h4>Pokémon med den højeste gennemsnitlige overall stat, taget ud fra 6 stats</h4>
         <canvas id="highestStatsChart"></canvas>
     </section>
 
-    <section>
-        <h2>Antal Pokémon pr. træner</h2>
+    <section class="chart4">
+        <h4>Antal Pokémon pr. træner</h4>
         <canvas id="trainerPokemonChart"></canvas>
     </section>
 </main>
