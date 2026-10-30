@@ -1,0 +1,171 @@
+
+/* Hele hjemmesiden */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #FEF8F3;
+    color: #252525;
+}
+
+/* Navigation */
+
+header {
+    max-width: 1500px;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #e5ded8;
+}
+
+.navbar {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #E52B32;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.navbar nav a:hover {
+    color: #E52B32;
+    background-color: #FEF8F3;
+}
+
+.navbar nav a.active {
+    color: #E52B32;
+    background-color: #FEF8F3;
+    font-weight: 700;
+}
+
+/* Dashboard */ 
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.dashboard-container h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    text-align: left;
+}
+
+.dashboard-container .tekst1 {
+    color: #7B8797;
+    font-size: 16px;
+    margin: 0;
+    text-align: left;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto 25px;
+    padding: 0 20px;
+}
+
+.dashboard-stats section {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid #e5ded8;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.dashboard-stats section h3 {
+    font-size: 19px;
+    margin: 0 0 12px;
+}
+
+.dashboard-stats section p {
+    color: #7B8797;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Container */
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container section {
+    min-width: 0;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #e5ded8;
+    border-radius: 12px;
+}
+
+.container h4 {
+    font-size: 19px;
+    text-align: left;
+    margin: 0 0 20px;
+}
+
+.container canvas {
+    display: block;
+    max-width: 100%;
+}
+/* Mobil Output  */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .navbar nav {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .dashboard-container {
+        margin-top: 20px;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+}

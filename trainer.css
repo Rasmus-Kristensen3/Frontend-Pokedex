@@ -1,0 +1,411 @@
+
+/* Hele hjemmesiden */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff8f2;
+    color: #252525;
+}
+
+/* Navigation */
+header {
+    background-color: white;
+    border-bottom: 1px solid #e5ded8;
+}
+
+nav {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav h1 {
+    color: #e53935;
+    font-size: 28px;
+    margin: 0 auto 0 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+nav a:hover,
+nav a[href="trainer.html"] {
+    color: #e53935;
+    background-color: #fff0ed;
+}
+
+/* Hovedindhold */
+main {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+/* Overskrift */
+.pageTitle {
+    margin-bottom: 35px;
+}
+
+.pageTitle h1 {
+    font-size: 36px;
+    margin: 0 0 15px;
+}
+
+.pageTitle p {
+    color: #777;
+    font-size: 16px;
+}
+
+/* Venstre og højre side */
+.trainerLayout {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.leftSide,
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Hvide bokse */
+#allTrainersSection,
+#trainerPokemonSection,
+#addPokemonSection,
+#createTrainerSection {
+    background-color: white;
+    border: 1px solid #e5ded8;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+section h2 {
+    font-size: 22px;
+    margin: 0 0 20px;
+}
+
+/* Liste med alle trainers */
+#allTrainersList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#allTrainersList li {
+    background-color: #fff8f2;
+    border: 1px solid #e5ded8;
+    border-radius: 9px;
+    padding: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#allTrainersList li:hover {
+    background-color: #eaf8eb;
+    border-color: #77bd83;
+}
+
+#allTrainersList li p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Valgt trainer */
+#allTrainersList li.selected {
+    background-color: #eaf8eb;
+    border-color: #77bd83;
+}
+
+/* Trainerens Pokemon */
+#trainerPokemonSection {
+    min-height: 250px;
+}
+
+#pokemonCount {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+#whichTrainersOwnWhatPokemon {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#whichTrainersOwnWhatPokemon li {
+    background-color: #fff8f2;
+    border: 1px solid #e5ded8;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+#trainerPokemon {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#trainerPokemon li,
+#trainerPokemon .pokemon-item {
+    list-style: none;
+    background-color: #fff8f2;
+    border: 1px solid #e5ded8;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+/* Formular til at tilføje Pokemon */
+#addPokemonForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+select,
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff8f2;
+    font-size: 15px;
+}
+
+/* Knapper */
+button {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #c62828;
+}
+
+#addPokemonBtn {
+    align-self: flex-start;
+}
+
+/* Opret ny trainer */
+#createTrainerForm {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff8f2;
+    border: 1px solid #e5ded8;
+    border-radius: 8px;
+}
+
+#createTrainerForm[hidden] {
+    display: none;
+}
+
+#createTrainerForm input {
+    margin-bottom: 12px;
+}
+
+#createTrainerForm button {
+    margin-top: 5px;
+}
+
+/* Mobil */
+@media (max-width: 750px) {
+
+    .trainerLayout {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    main {
+        margin-top: 30px;
+    }
+
+    .pageTitle h1 {
+        font-size: 30px;
+    }
+}
+
+
+/* Gør hele hjemmesiden mere kompakt */
+main {
+    max-width: 1150px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* Mindre afstand mellem boksene */
+.trainerLayout {
+    grid-template-columns: 35% 1fr;
+    gap: 15px;
+}
+
+.leftSide,
+.rightSide {
+    gap: 15px;
+}
+
+/* Mindre hvide bokse */
+#allTrainersSection,
+#trainerPokemonSection,
+#addPokemonSection,
+#createTrainerSection {
+    padding: 15px;
+}
+
+/* Mindre overskrifter */
+section h2 {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.pageTitle {
+    margin-bottom: 20px;
+}
+
+.pageTitle h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+/* Trainers fylder mindre */
+#allTrainersList li {
+    padding: 8px 12px;
+    margin-bottom: 7px;
+}
+
+#allTrainersList li p {
+    margin: 3px 0;
+    font-size: 13px;
+}
+
+/* Pokemon-boksen */
+#trainerPokemonSection {
+    min-height: 150px;
+}
+
+#whichTrainersOwnWhatPokemon li {
+    padding: 9px 12px;
+    margin-bottom: 6px;
+}
+
+/* Mindre formular */
+#addPokemonForm {
+    gap: 10px;
+}
+
+select,
+input {
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Mindre knapper */
+button {
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+/* Begræns trainer-listens højde */
+#allTrainersList {
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+/* Begræns Pokemon-listens højde */
+#whichTrainersOwnWhatPokemon {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Mobil */
+@media (max-width: 750px) {
+    .trainerLayout {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Trainerens navn */
+#allTrainersList li h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #252525;
+    margin: 0 0 5px;
+}
+
+/* Hjemby og alder */
+#allTrainersList li p {
+    font-size: 12px;
+    color: #000;
+    margin: 2px 0;
+}
+
+/* Mere kompakte trainer-kort */
+#allTrainersList li {
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+/* Valgt trainer */
+#allTrainersList li.selected {
+    background-color: #e8f7e9;
+    border: 1px solid #77bd83;
+}
+
+/* Gør Pokémon-listen kompakt */
+#trainerPokemon {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Pokémon-kort */
+#trainerPokemon .pokemon-item {
+    padding: 10px 14px;
+    margin-bottom: 2px;
+}
+
+/* Gør formularen mere kompakt */
+#addPokemonForm {
+    gap: 8px;
+}
+
+/* Skjul ekstra liste, hvis den ikke bruges */
+#whichTrainersOwnWhatPokemon:empty {
+    display: none;
+}
+
+/* Sørg for at mobil-layoutet virker */
+@media (max-width: 750px) {
+    .trainerLayout {
+        grid-template-columns: 1fr;
+    }
+}
+
