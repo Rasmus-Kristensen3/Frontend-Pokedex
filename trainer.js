@@ -13,18 +13,29 @@ const keys = Object.keys(trainerNames);
 for(let j = 0; j<allTrainersData.length; j++){
     const allTrainerNamesLi = document.createElement("li");
     for(let i = 0; i<keys.length; i++){
-        const trainerP = document.createElement("p");
-        trainerP.textContent = `${trainerNames[keys[i]]}: ${allTrainersData[j][keys[i]]}`;
+        const trainerP = document.createElement(keys[i] === "name" ? "h3" : "p");
+        if (keys[i] === "name") {
+            trainerP.textContent = allTrainersData[j].name;
+        }
+        else if (keys[i] === "age") {
+            trainerP.textContent = "Age " + allTrainersData[j].age;
+        }
+        else if (keys[i] === "hometown") {
+            trainerP.textContent = "Hometown " + allTrainersData[j].hometown;
+        }
         allTrainerNamesLi.appendChild(trainerP);
 
     console.log(`${trainerNames[keys[i]]}: ${allTrainersData[j][keys[i]]}`);}
     // 2)
 
     allTrainerNamesLi.addEventListener("click", ()=> {
+        document.querySelector("#selectedTrainerName").textContent =
+            allTrainersData[j].name + "s Pokemon";
 fetch(`http://localhost:3000/pokemontrainersown?trainer_name=${allTrainersData[j].name}`)
     .then (response=> response.json())
     .then(whichTrainersOwnWhatPokemonData => {
         const whichTrainersOwnWhatPokemonUl = document.querySelector("#whichTrainersOwnWhatPokemon");
+        const trainerSelect = document.querySelector("#trainerSelect");
         whichTrainersOwnWhatPokemonUl.textContent = "";
         for( let i = 0; i<whichTrainersOwnWhatPokemonData.length; i++){
             const pokemonLi = document.createElement("li");
@@ -100,33 +111,25 @@ createTrainerForm.addEventListener("submit", function (event) {
 
 });
 
-function getTrainers(){
-    fetch("http://localhost:3000/alltrainers")
-        .then(response => response.json())
-        .then(trainers => {
-            const trainerList = document.querySelector("#trainerList");
-            trainerList.innerText ="";
+fetch("http://localhost:3000/alltrainers")
+    .then(response => response.json())
+    .then(trainers => {
+        console.log(trainers);
 
-            trainers.forEach(trainer =>{
-                const button = document.createElement("button");
+        trainers.sort((a, b) => a.name.localeCompare(b.name));
 
-                button.textContent = trainer.name;
-                button.type = "button";
+        const trainerSelect = document.querySelector("#trainer_id");
 
-                button.addEventListener("click", function () {
-                    document.querySelector("#trainer_id").value = trainer.trainer_id;
+        trainers.forEach(trainer => {
+            const option = document.createElement("option");
 
-                    // vise hvilke trainer vi har valgt
-                    document.querySelector("#selectedTrainerName").textContent =
-                        trainer.name +"s Pokémon";
-                });
+            option.textContent = trainer.name;
+            option.value = trainer.trainer_id;
 
-                trainerList.appendChild(button);
-            });
+            trainerSelect.appendChild(option);
         });
-}
+    });
 
-getTrainers();
 
 
 fetch("http://localhost:3000/allpokemon")

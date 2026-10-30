@@ -1,19 +1,20 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Pokemon Trainers</title>
+
     <link rel="stylesheet" href="trainer.css">
 
 </head>
+
 <body>
-<h1> Pokemon Trainers</h1>
-<ul id="allTrainersList"></ul>
-<ul id="whichTrainersOwnWhatPokemon"></ul>
 
-<h2> All Trainers </h2>
-
-
+<!-- Navigation -->
 <header>
     <nav>
         <h1>Pokédex</h1>
@@ -24,74 +25,138 @@
     </nav>
 </header>
 
-<section>
-<h1>Trainers</h1>
+<main>
 
-<p>Vælg en trainer, se deres Pokemon, eller opret en ny trainer</p>
-</section>
+    <!-- Overskrift -->
+    <section class="pageTitle">
+        <h1>Trainers</h1>
 
-<section>
-    <h2> Alle Trainers</h2>
-    <div id="trainerList"></div>
-</section>
+        <p>
+            Vælg en trainer, se deres Pokemon,
+            eller opret en ny trainer
+        </p>
+    </section>
 
+    <!-- Venstre og højre side -->
+    <div class="trainerLayout">
 
-<section id="trainerPokemonSection">
-    <h2 id="selectedTrainerName">Trainerens Pokemon</h2>
+        <!-- VENSTRE SIDE -->
+        <div class="leftSide">
 
-    <p id="pokemonCount"></p>
+            <!-- Liste med alle trainers -->
+            <section id="allTrainersSection">
 
-    <div id="trainerPokemon"></div>
-</section>
+                <h2>Alle Trainers</h2>
 
-<section id="addPokemonSection">
-    <h2> Tilføj en Pokemon</h2>
-    <form id="addPokemonForm">
+                <ul id="allTrainersList"></ul>
 
-        <input type="hidden"
-                id="trainer_id"
-                name="trainer_id">
+            </section>
 
-        <select id="pokedex_number"
-                name="pokedex_number" required>
+            <!-- Opret ny trainer -->
+            <section id="createTrainerSection">
 
-            <option value="">Vælg en Pokemon</option>
-        </select>
-        <button type="submit" id="addPokemonBtn">
-            Tilføj Pokemon
-        </button>
-    </form>
-</section>
+                <button type="button" id="createTrainer">
+                    + Opret ny trainer
+                </button>
 
-<section id="createTrainerSection">
-    <button type="button" id="createTrainer">
-        + Opret ny trainer
-    </button>
+                <form id="createTrainerForm" hidden>
 
-    <form id="createTrainerForm" hidden>
-        <h2>Opret ny trainer</h2>
+                    <h2>Opret ny trainer</h2>
 
-        <input type="text"
-               id="new_trainer_name"
-               name="trainer_name"
-               placeholder="Trainer navn" required>
+                    <input
+                            type="text"
+                            id="new_trainer_name"
+                            name="trainer_name"
+                            placeholder="Trainer navn"
+                            required
+                    >
 
-        <input type="number"
-               id="age"
-               name="age"
-               placeholder="Alder" required>
+                    <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            placeholder="Alder"
+                            required
+                    >
 
-        <input type="text"
-               id="hometown"
-               name="hometown"
-               placeholder="hjemby" required>
+                    <input
+                            type="text"
+                            id="hometown"
+                            name="hometown"
+                            placeholder="Hjemby"
+                            required
+                    >
 
-        <button type="submit">
-            Opret trainer
-        </button>
-    </form>
-</section>
+                    <button type="submit">
+                        Opret trainer
+                    </button>
 
+                </form>
+
+            </section>
+
+        </div>
+
+        <!-- HØJRE SIDE -->
+        <div class="rightSide">
+
+            <!-- Viser trainerens Pokemon -->
+            <section id="trainerPokemonSection">
+
+                <h2 id="selectedTrainerName">
+                    Vælg en trainer
+                </h2>
+
+                <p id="pokemonCount"></p>
+
+                <ul id="whichTrainersOwnWhatPokemon"></ul>
+
+                <div id="trainerPokemon"></div>
+
+            </section>
+
+            <!-- Tilføj Pokemon til trainer -->
+            <section id="addPokemonSection">
+
+                <h2>Tilføj en Pokemon</h2>
+
+                <form id="addPokemonForm">
+
+                    <!-- Vælg trainer -->
+                    <select
+                            id="trainer_id"
+                            name="trainer_id"
+                            required
+                    >
+                        <option value="">
+                            Vælg en trainer
+                        </option>
+                    </select>
+
+                    <!-- Vælg Pokemon -->
+                    <select
+                            id="pokedex_number"
+                            name="pokedex_number"
+                            required
+                    >
+                        <option value="">
+                            Vælg en Pokemon
+                        </option>
+                    </select>
+
+                    <button type="submit" id="addPokemonBtn">
+                        Tilføj Pokemon
+                    </button>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
 
 <script src="trainer.js" defer></script>
 </body>
