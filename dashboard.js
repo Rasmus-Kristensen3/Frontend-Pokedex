@@ -171,3 +171,11 @@ fetch('http://localhost:3000/howmanypokemonmoves')
     .catch(error => {
         console.error('Fejl ved hentning af moves:', error);
     });
+
+
+fetch('http://localhost:3000/howmanypokemon')
+    .then(response => response.json())
+    .then(howManyPokemonData => {console.log(howManyPokemonData[[0]])
+        const pokemonCountP = document.querySelector("#pokemonCount")
+        pokemonCountP.textContent = `${howManyPokemonData[0].TotalPokemon}`
+    })
