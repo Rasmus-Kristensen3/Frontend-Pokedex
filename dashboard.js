@@ -167,5 +167,5 @@ fetch('http://localhost:3000/howmanypokemon')
     .then(response => response.json())
     .then(howManyPokemonData => {console.log(howManyPokemonData[[0]])
         const pokemonCountP = document.querySelector("#pokemonCount")
-        pokemonCountP.textContent = `${howManyPokemonData[0].TotalPokemon} Pokemon in total`
+        pokemonCountP.textContent = `${howManyPokemonData[0].TotalPokemon}`
     })
