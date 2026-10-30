@@ -168,3 +168,37 @@ searchAttackButton.addEventListener("click", () => {
         });
 
 });
+
+// CLEAR  POKÉMON
+const clearAllPokemon = document.querySelector("#clearAllPokemon");
+
+clearAllPokemon.addEventListener("click", () => {
+    allPokemonList.replaceChildren();
+});
+
+
+// CLEAR NAVNE
+const clearPokemonNameStats = document.querySelector("#clearPokemonNameStats");
+
+clearPokemonNameStats.addEventListener("click", () => {
+    nameResult.replaceChildren();
+    pokemonNameInput.value = "";
+});
+
+
+// CLEAR TYPE
+const clearType = document.querySelector("#clearType");
+
+clearType.addEventListener("click", () => {
+    typeResult.replaceChildren();
+    pokemonTypeInput.value = "";
+});
+
+
+// CLEAR ATTACK
+const clearPokemonStats = document.querySelector("#clearPokemonStats");
+
+clearPokemonStats.addEventListener("click", () => {
+    attackResult.replaceChildren();
+    pokemonAttackInput.value = "";
+});
