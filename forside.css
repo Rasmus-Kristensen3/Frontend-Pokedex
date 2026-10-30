@@ -1,0 +1,187 @@
+
+/* Hele hjemmesiden */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8f2;
+    color: #243246;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation */
+header {
+    background-color: white;
+    border-bottom: 1px solid #e5ded8;
+    flex-shrink: 0;
+}
+
+nav {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav h1 {
+    color: #e53935;
+    font-size: 28px;
+    margin: 0 auto 0 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+nav a:hover,
+nav a[href="forside.html"] {
+    color: #e53935;
+    background-color: #fff0ed;
+}
+
+/* Hovedindhold */
+main {
+    width: 100%;
+    max-width: 1400px;
+    flex: 1;
+    min-height: 0;
+
+    margin: 0 auto;
+    padding: 15px 20px 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Forside */
+.hero {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Pikachu */
+.pokemonImagePikachu {
+    width: 320px;
+    max-width: 27%;
+    height: 390px;
+    max-height: 50vh;
+    object-fit: contain;
+}
+
+/* Charizard */
+.pokemonImageCharizard {
+    width: 350px;
+    max-width: 27%;
+    height: 390px;
+    max-height: 50vh;
+    object-fit: contain;
+}
+
+/* Indhold i midten */
+.pokeball {
+    flex: 1;
+    min-width: 0;
+    max-width: 600px;
+
+    text-align: center;
+    position: relative;
+}
+
+/* Stor Pokédex overskrift */
+.pokeball h1 {
+    color: #e5252a;
+    font-size: clamp(50px, 6vw, 90px);
+    margin: 0 0 20px;
+    text-shadow: 3px 3px 0 #b51c20;
+}
+
+/* Underoverskrift */
+.pokeball h2 {
+    color: #243246;
+    font-size: 26px;
+    margin: 0 0 20px;
+}
+
+/* Beskrivelse */
+.pokeball p {
+    color: #77808d;
+    font-size: 19px;
+    line-height: 1.6;
+    margin: 0 0 30px;
+}
+
+/* Knap */
+.startButton {
+    display: inline-block;
+    padding: 18px 35px;
+
+    background-color: #e5252a;
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px #e5252a33;
+    transition: 0.2s;
+}
+
+.startButton:hover {
+    background-color: #c91e24;
+    transform: translateY(-3px);
+}
+
+/* Navnekassen nederst */
+.creators {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+    padding: 20px;
+
+    background-color: white;
+    border: 1px solid #e5ded8;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.creators h3 {
+    font-size: 18px;
+    margin: 0 0 15px;
+}
+
+/* Navne uden individuelle kasser */
+.creators span {
+    display: inline-block;
+    margin: 0 18px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #243246;
+}
+
+

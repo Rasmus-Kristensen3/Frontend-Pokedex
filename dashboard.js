@@ -88,9 +88,17 @@ fetch('http://localhost:3000/chartfortrainersxpokemons')
     })
     .catch(error => console.error('Error loading trainer chart:', error));
 
+fetch('http://localhost:3000/howmanytrainers')
+    .then(response => response.json())
+    .then(howManyTrainersData => {
+        console.log(howManyTrainersData)
 
-
-
+        const trainerCount = document.querySelector('#trainerCount');
+        trainerCount.textContent= `${howManyTrainersData[0].Trainers}`
+    })
+    .catch(error => {
+        console.error('Fejl ved hentning af trainers:', error);
+    });
 
 
 
@@ -148,8 +156,26 @@ fetch('http://localhost:3000/chartfortrainersxpokemons')
 
 
 fetch('http://localhost:3000/howmanypokemonmoves')
-.then(response => response.json())
-.then(howManyMovesData => {console.log(howManyMovesData[0].Moves)
-const movesCountP = document.querySelector("#movesCount")
-    movesCountP.textContent = `${howManyMovesData[0].Moves} Moves in total`
-});
+    .then(response => response.json())
+    .then(data => {
+        console.log('API-data:', data);
+
+        const moveCountP = document.querySelector('#moveCount');
+
+        if (moveCountP) {
+            moveCountP.textContent = `${data[0].Moves}`;
+        } else {
+            console.error('HTML-elementet #moveCount blev ikke fundet');
+        }
+    })
+    .catch(error => {
+        console.error('Fejl ved hentning af moves:', error);
+    });
+
+
+fetch('http://localhost:3000/howmanypokemon')
+    .then(response => response.json())
+    .then(howManyPokemonData => {console.log(howManyPokemonData[[0]])
+        const pokemonCountP = document.querySelector("#pokemonCount")
+        pokemonCountP.textContent = `${howManyPokemonData[0].TotalPokemon}`
+    })

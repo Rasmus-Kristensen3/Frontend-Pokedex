@@ -9,49 +9,43 @@ body {
 /* Header */
 header {
     background-color: white;
-    padding: 25px 7%;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #e5ded8;
 }
 
-header h1 {
-    color: #e5252a;
-    font-size: 36px;
-    margin: 0 0 10px;
+nav h1 {
+    color: #e53935;
+    font-size: 28px;
+    margin: 0 auto 0 0;
 }
-
-header h3 {
-    color: #e5252a;
-    font-size: 20px;
-    margin: 0 0 5px;
-    font-style: italic;
-}
-
-header p {
-    color: #788596;
-    margin: 0;
-    font-size: 18px;
-}
-
 /* Navigation */
 nav {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
     display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    align-items: center;
+    gap: 30px;
 }
 
 nav a {
-    color: #e5252a;
     text-decoration: none;
-    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
 }
 
-nav a:hover {
-    text-decoration: underline;
+nav a:hover,
+nav a[href="pokemon.html"] {
+    color: #e53935;
+    background-color: #fff0ed;
 }
 
 /* Hovedindhold */
 main {
-    padding: 35px 7%;
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
 }
 
 /* Sektioner */
